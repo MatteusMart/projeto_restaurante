@@ -1,5 +1,6 @@
 <?php
     include('includes/cabecalho.php');
+    include'includes/conexao.php';
 ?>
 
     <div class="ghost-element">
@@ -87,19 +88,26 @@
 
             <div class="slider-cardapio">
                 <div class="slider-002 small-12 small-centered columns">
+                    <?php
+                    $sql = "SELECT * FROM tb_pratos WHERE destaque = 1";
 
+                    $result = $conexao ->query($sql);
+
+                    if($result -> num_rows > 0){
+                        while($row = $result -> fetch_assoc()){
+                    ?>
                     <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
                         <div class="cardapio-item">
-                            <a href="camarao-alho.html">
+                            <a href="prato.php?prato=<?php echo $row['codigo'] ?>">
 
                                 <div class="cardapio-item-image">
-                                    <img src="img/cardapio/camarao-alho.jpg" alt="camarao" />
+                                    <img src="img/cardapio/<?= $row['codigo'] ?>.jpg" alt="<?php $row ['nome']?>" />
                                 </div>
 
                                 <div class="item-info">
 
 
-                                    <div class="title">Camarão ao Alho</div>
+                                    <div class="title"><?php echo $row['nome']?></div>
                                 </div>
 
                                 <div class="gradient-filter">
@@ -108,72 +116,10 @@
                             </a>
                         </div>
                     </div>
-
-                    <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
-                        <div class="cardapio-item">
-                            <a href="picanha-brasileira.html">
-
-                                <div class="cardapio-item-image">
-                                    <img src="img/cardapio/picanha-brasileira.jpg" alt="barbecue" />
-                                </div>
-
-                                <div class="item-info">
-
-
-                                    <div class="title">Picanha à Brasileira</div>
-                                </div>
-
-                                <div class="gradient-filter">
-                                </div>
-
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
-                        <div class="cardapio-item">
-                            <a href="cheesecake-cereja.html">
-
-                                <div class="cardapio-item-image">
-                                    <img src="img/cardapio/cheesecake-cereja.jpg" alt="cheesecake" />
-                                </div>
-
-                                <div class="item-info">
-
-
-                                    <div class="title">Cheesecake de cereja</div>
-                                </div>
-
-                                <div class="gradient-filter">
-                                </div>
-
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="cardapio-item-outer bounce-hover small-10 medium-4 columns">
-                        <div class="cardapio-item">
-                            <a href="salmao-legumes.html">
-
-                                <div class="cardapio-item-image">
-                                    <img src="img/cardapio/salmao-legumes.jpg" alt="salmao" />
-                                </div>
-
-                                <div class="item-info">
-
-
-                                    <div class="title">Salmão aos Legumes</div>
-                                </div>
-
-                                <div class="gradient-filter">
-                                </div>
-
-                            </a>
-                        </div>
-                    </div>
-
-
-
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -191,7 +137,7 @@
 
             <div class="reservation-form small-12 columns no-padding">
 
-                <form>
+                <form action="admin/reserva.php" method="POST">
 
                     <div class="form-part1 small-12 large-8 xlarge-7 columns no-padding">
 
@@ -207,9 +153,9 @@
                     <div class="form-part2 small-12 large-3 xlarge-3 end columns no-padding">
                         <input type="text" name="telefone" class="field" placeholder="Telefone" />
 
-                        <input type="datetime-local" name="data" class="field" placeholder="Data e hora" />
+                        <input type="datetime-local" name="data_reserva" class="field" placeholder="Data e hora" />
 
-                        <input type="text" name="data" class="field" placeholder="Número de pessoas" />
+                        <input type="text" name="numero_pessoas" class="field" placeholder="Número de pessoas" />
 
                         <input type="submit" name="submit" value="Reservar" />
 
