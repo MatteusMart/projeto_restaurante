@@ -3,14 +3,14 @@
 include('../includes/conexao.php');
 
 if (isset($_POST['submit'])) {
-    $imagem = $_FILES['imagem'];
-    $nome = $_POST['nome'];
-    $codigo = $_POST['codigo'];
-    $preco = $_POST['preco'];
+    $imagem    = $_FILES['imagem'];
+    $nome      = $_POST['nome'];
+    $codigo    = $_POST['codigo'];
+    $preco     = $_POST['preco'];
     $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
-    $calorias = $_POST['calorias'];
-    $destaque = $_POST['destaque'];
+    $calorias  = $_POST['calorias'];
+    $destaque  = $_POST['destaque'];
 
     $dir = "../img/cardapio/";
 

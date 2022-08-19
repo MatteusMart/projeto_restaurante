@@ -8,7 +8,7 @@
         $email    = $_POST['email'];
         $datar    = $_POST['data_reserva'];
         $mens     = $_POST['mensagem'];
-        $npessoa  = $_POST['numero_pessoas'];
+        $npessoas = $_POST['numero_pessoas'];
 
 
         $sql = "INSERT INTO tb_reserva(nome,
