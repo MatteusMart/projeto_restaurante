@@ -1,6 +1,6 @@
 <?php
 
-define('HOST','localhost');
+define('HOST','10 97 46 107');
 define('USUARIO','root');
 define('SENHA','');
 define('DB','db_restaurante');
