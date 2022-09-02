@@ -2,6 +2,17 @@
 
 include('../includes/conexao.php');
 
+
+    session_start();
+    echo "usuario".$_SESSION['usuarioNome'];
+
+    if($_SESSION['usuarioNome'] == ""){
+        header("location: index.php");
+        $_SESSION[`loginErro`] = "Você não efetuou o login";
+    }
+
+
+
 ?>
 
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

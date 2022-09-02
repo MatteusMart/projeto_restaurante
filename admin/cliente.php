@@ -1,6 +1,13 @@
 <?php
+
     session_start();
-    echo"Usuario:". $_SESSION['usuarioNome'];
+    echo "usuario".$_SESSION['usuarioNome'];
+
+    if($_SESSION['usuarioNome'] == ""){
+        header("location: index.php");
+        $_SESSION[`loginErro`] = "Você não efetuou o login";
+    }
+
 ?>
 <br>
-<a href="sair.php">sair</a>
+<a href="sair.php">Sair</a>
